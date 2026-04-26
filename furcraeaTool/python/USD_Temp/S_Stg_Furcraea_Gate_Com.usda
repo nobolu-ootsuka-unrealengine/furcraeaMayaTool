@@ -1,0 +1,11 @@
+#usda 1.0
+(
+    defaultPrim = "S_Stg_Furcraea_Gate_Com_Geom"
+)
+
+def "S_Stg_Furcraea_Gate_Com_Geom" (
+    prepend payload = @S_Stg_Furcraea_Gate_Com_Payload.usda@
+)
+{
+}
+

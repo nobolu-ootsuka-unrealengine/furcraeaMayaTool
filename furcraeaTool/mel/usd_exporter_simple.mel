@@ -1,0 +1,7 @@
+global proc usd_exporter_simple(){
+    print("USDエクスポーター");
+    python("import USD_Exporter_Simple_Dock");
+	python("import importlib");
+	python("importlib.reload(USD_Exporter_Simple_Dock)");
+    python("USD_Exporter_Simple_Dock.starter()");
+}

@@ -1,0 +1,45 @@
+print("C:/Users/furcr/Documents/maya/2022/scripts/userSetup.mel\n");
+
+///putenv Add---------------------------------------------------
+//putenv "MAYA_SCRIPT_PATH";//パスを追加
+proc Add_MAYA_SCRIPT_PATH(string $Add_Path)
+{
+    //$Add_Path="D:/furcraeaTokyo/furcraeaTool";
+    $sMAYA_SCRIPT_PATH_StrArr=`getenv "MAYA_SCRIPT_PATH"`;
+    print("$sMAYA_SCRIPT_PATH_StrArr= "+$sMAYA_SCRIPT_PATH_StrArr+"\n");
+    //$sMAYA_SCRIPT_PATH_Arr[size($sMAYA_SCRIPT_PATH_Arr)] = $Add_Path; 
+    $sMAYA_SCRIPT_PATH_StrArr=$sMAYA_SCRIPT_PATH_StrArr+";"+$Add_Path;
+    $putenv_Result=`putenv "MAYA_SCRIPT_PATH" $sMAYA_SCRIPT_PATH_StrArr`;
+    print("$putenv_Result= "+$putenv_Result+"\n");
+}
+//Add_MAYA_SCRIPT_PATH("D:/furcraeaTokyo/furcraeaTool");
+Add_MAYA_SCRIPT_PATH("D:/furcraeaTokyo/furcraeaTool/mel");
+//Add_MAYA_SCRIPT_PATH("D:/furcraeaTokyo/furcraeaTool/python");
+
+
+///putenv Add-----------------------------------------------------
+//---------------------------------------------------------
+//getenv "MAYA_SCRIPT_PATH";//パスを確認
+
+$sPath=`getenv "PATH"`;
+print("$sPath= "+$sPath+"\n");
+$sMAYA_SCRIPT_PATH=`getenv "MAYA_SCRIPT_PATH"`;
+print("$sMAYA_SCRIPT_PATH= "+$sMAYA_SCRIPT_PATH+"\n");
+
+$array = stringToStringArray($sMAYA_SCRIPT_PATH, ";");
+
+for ($MSP in $array) {
+    print($MSP+"\n");
+}
+//---------------------------------------------------------
+
+
+python("import maya.cmds as cmds");
+python("selection = cmds.ls(sl=True)");
+python("print(selection)");
+
+
+//Pythonのシステムに追加
+python("import sys");
+python("sys.path.append('D:/furcraeaTokyo/furcraeaTool/python')");
+
